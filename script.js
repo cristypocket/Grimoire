@@ -904,7 +904,7 @@ const I18N = {
 
     // nav FR
     "nav_exercices": "Exercices",
-    "nav.filters.reinforcement": "Renforcement", 
+    "nav.filters.reinforcement":"Renforcement", 
     "nav.filters.contractRelax":"Contracté–relâché",
     "nav.filters.softMobility":"Mobilisation douce",
     "nav.filters.softStretch":"Étirements doux",
@@ -989,7 +989,7 @@ const I18N = {
 
     // nav EN
     "nav_exercices": "Exercises",
-    "nav.filters.reinforcement": "Reinforcement", 
+    "nav.filters.reinforcement":"Reinforcement", 
     "nav.filters.contractRelax":"Contract–relax",
     "nav.filters.softMobility":"Soft mobility",
     "nav.filters.softStretch":"Soft stretch",
