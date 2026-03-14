@@ -977,6 +977,8 @@ const I18N = {
     ready: "Ready?",
     inhale: "Inspire…",
     exhale: "Expire…",
+    exercise: "Exercice.",
+    break: "Pause.", 
     done: "Terminé 🌿",
     "timer.start": "Démarrer",
     "timer.stop": "Stop",
@@ -1062,6 +1064,8 @@ const I18N = {
     ready: "Ready?",
     inhale: "Inhale…",
     exhale: "Exhale…",
+    exercise: "Exercise.",
+    break: "Break.", 
     done: "All done 🌿",
     "timer.start": "Start",
     "timer.stop": "Stop",
@@ -1401,7 +1405,7 @@ function openTool(id){
 
        btn.addEventListener("click", () => {
          if(tool.intervalTimer){
-           openintervalTimer(tool.intervalTimer);
+           openIntervalTimer(tool.intervalTimer);
          } else if(tool.timer){
            openBreathTimer({ ...tool.timer, sound: true });
            }
@@ -1432,6 +1436,18 @@ let btRunning = false;
 // Animation rAF
 let btAnimId = null;
 let btAnimStart = 0;
+
+let itConfig = {
+  totalSec: 120,
+  exerciseSec: 30,
+  breakSec: 30
+};
+
+let itLeft = itConfig.totalSec;
+let itTick = null;
+let itRunning = false;
+let itAnimId = null;
+let itAnimStart = 0;
 
 const ORB_MIN_SCALE = 1;
 const ORB_MAX_SCALE = 3.0;
@@ -1665,7 +1681,7 @@ function openBreathTimer(options = {}){
 // Open interval timer
 // -------------------------
 
-function openintervalTimer(options = {}){
+function openIntervalTimer(options = {}){
   const total = Number(options.totalSec);
   const exe = Number(options.exerciseSec);
   const brk = Number(options.breakSec);
@@ -1677,7 +1693,7 @@ function openintervalTimer(options = {}){
   };
 
   itLeft = itConfig.totalSec;
-  btUpdateUI();
+  itUpdateUI();
 
   if(itPhase) itPhase.textContent = "Ready?";
   if(itCount) itCount.textContent = "";
@@ -1805,10 +1821,10 @@ function itStartRun(){
 
   itTick = setInterval(() => {
     itLeft = Math.max(0, itLeft - 1);
-    btUpdateUI();
+    itUpdateUI();
 
     if(itLeft <= 0){
-      btStopAll();
+      itStopAll();
       if(itPhase) itPhase.textContent = t("done");
     }
   }, 1000);
