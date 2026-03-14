@@ -1029,11 +1029,11 @@ details.drop > ul button:active{
   width: 40px;
   height: 5px;
   border-radius: 8px;            
-  background: linear-gradient(top at 30% 30%,
+  background: linear-gradient(to top at 30% 30%,
     color-mix(in srgb, var(--terracotta) 30%, transparent),
     color-mix(in srgb, var(--sage) 22%, transparent)
   );
-  transform: scaleY(var(--bar-scale, 2));   /* <- scale piloté par JS */
+  transform: scaleY(var(--bar-scale, 1));   /* <- scale piloté par JS */
   transition: transform 250ms linear;
   filter: blur(0.2px);
 }
