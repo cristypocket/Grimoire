@@ -989,13 +989,11 @@ const I18N = {
 
     // nav EN
     "nav_exercices": "Exercises",
+    "nav.filters.reinforcement": "Reinforcement", 
     "nav.filters.contractRelax":"Contract–relax",
     "nav.filters.softMobility":"Soft mobility",
     "nav.filters.softStretch":"Soft stretch",
 
-    "nav_reinforcement": "Reinforcement",
-    "nav.filters.planck":"Planck",  
-     
     "nav_somatic": "Somatic",
     "nav.filters.orientation":"Orientation",
     "nav.filters.pendulation":"Pendulation",
