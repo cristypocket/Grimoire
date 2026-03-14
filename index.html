@@ -40,6 +40,7 @@
         <details class="drop">
           <summary data-i18n="nav_exercices">Exercices</summary>
           <ul>
+            <li><button data-filter="Renforcement" data-i18n="nav.filters.reinforcement">Renforcement</button></li>
             <li><button data-filter="Contracté–relâché" data-i18n="nav.filters.contractRelax">Contracté–relâché</button></li>
             <li><button data-filter="Mobilisation douce" data-i18n="nav.filters.softMobility">Mobilisation douce</button></li>
             <li><button data-filter="Étirements doux" data-i18n="nav.filters.softStretch">Étirements doux</button></li>
@@ -180,13 +181,39 @@
   <dialog id="breathTimer">
     <div class="modal">
       <div class="modal-top">
-        <h3 data-i18n="timer.title">🌬 Timer respiration</h3>
+        <h3 data-i18n="breath.timer.title">🌬 Timer respiration</h3>
         <button id="btClose" class="close">✕</button>
       </div>
 
       <div class="breath-orb">
         <div class="breath-orb-inner"></div>
         <div class="breath-count" id="btCount"></div>
+      </div>
+
+      <div id="btPhase" class="center-text" data-i18n="timer.ready">Ready ?</div>
+      <div id="btRemaining" class="center-text">2:00</div>
+
+      <div class="hero-actions">
+        <button id="btStart" class="btn primary" data-i18n="timer.start">Démarrer</button>
+        <button id="btStop" class="btn" data-i18n="timer.stop">Stop</button>
+        <button id="btReset" class="btn ghost" data-i18n="timer.reset">Reset</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ===================== -->
+  <!-- INTERVAL TIMER MODAL -->
+  <!-- ===================== -->
+  <dialog id="intervalTimer">
+    <div class="modal">
+      <div class="modal-top">
+        <h3 data-i18n="interval.timer.title">⏱️ Timer à intervale</h3>
+        <button id="btClose" class="close">✕</button>
+      </div>
+
+      <div class="interval-orb">
+        <div class="interval-orb-inner"></div>
+        <div class="interval-count" id="btCount"></div>
       </div>
 
       <div id="btPhase" class="center-text" data-i18n="timer.ready">Ready ?</div>
