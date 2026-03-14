@@ -1378,43 +1378,28 @@ function openTool(id){
       <p><strong>${escapeHtml(t("note"))}</strong> ${escapeHtml(toolText(tool,"note") || "—")}</p>
     `;
 
-    if(tool.timer){
-      modalBody.innerHTML += `
-        <div style="margin-top:16px;">
-          <button class="btn" id="startToolTimer" type="button">
-            ${escapeHtml(t("start_timer"))}
-          </button>
-        </div>
-      `;
+  if(tool.timer || tool.intervalTimer){
+    modalBody.innerHTML += `
+       <div style="margin-top:16px;">
+         <button class="btn" id="startToolTimer" type="button">
+           ${escapeHtml(t("start_timer"))}
+         </button>
+       </div>
+     `;
 
-      setTimeout(() => {
-        const btn = document.getElementById("startToolTimer");
-        if(btn){
-          btn.addEventListener("click", () => {
-            openBreathTimer({ ...tool.timer, sound: true });
-          });
-        }
+     setTimeout(() => {
+       const btn = document.getElementById("startToolTimer");
+       if(!btn) return;
+
+       btn.addEventListener("click", () => {
+         if(tool.intervalTimer){
+           openIntervalTimer(tool.intervalTimer);
+         } else if(tool.timer){
+           openBreathTimer({ ...tool.timer, sound: true });
+           }
+       });
       }, 0);
-    }
-
-    if(tool.intervaltimer){
-      modalBody.innerHTML += `
-        <div style="margin-top:16px;">
-          <button class="btn" id="startToolTimer" type="button">
-            ${escapeHtml(t("start_timer"))}
-          </button>
-        </div>
-      `;
-
-      setTimeout(() => {
-        const btn = document.getElementById("startToolTimer");
-        if(btn){
-          btn.addEventListener("click", () => {
-            openintervalTimer({ ...tool.intervaltimer, sound: false });
-          });
-        }
-      }, 0);
-    } 
+   }
   }
 
   safeShowModal(toolModal);
@@ -1669,7 +1654,7 @@ function openBreathTimer(options = {}){
 // Open interval timer
 // -------------------------
 
-function openIntervalTimer(options = {}){
+function openintervalTimer(options = {}){
   const total = Number(options.totalSec);
   const exe = Number(options.exerciseSec);
   const brk = Number(options.breakSec);
