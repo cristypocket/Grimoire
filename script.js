@@ -1405,7 +1405,7 @@ function openTool(id){
 
        btn.addEventListener("click", () => {
          if(tool.intervalTimer){
-           openIntervalTimer({ ...tool.intervalTimer, sound: true });
+           openIntervalTimer(tool.intervalTimer);
          } else if(tool.timer){
            openBreathTimer({ ...tool.timer, sound: true });
            }
