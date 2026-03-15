@@ -1549,32 +1549,32 @@ function playIntervalBell(type = "transition"){
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = "sine";
+    osc.type = "triangle";   // son plus doux qu'un sine pur
     osc.frequency.value = freq;
 
     osc.connect(gain);
     gain.connect(ctx.destination);
 
+    // attaque douce
     gain.gain.setValueAtTime(0.0001, now + delay);
-    gain.gain.exponentialRampToValueAtTime(0.15, now + delay + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 0.6);
+    gain.gain.linearRampToValueAtTime(0.12, now + delay + 0.02);
+
+    // décroissance longue (effet gong)
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 1.2);
 
     osc.start(now + delay);
-    osc.stop(now + delay + 0.6);
+    osc.stop(now + delay + 1.2);
   }
 
   if(type === "done"){
-    // double petite clochette
-    bell(880, 0);
-    bell(1320, 0.15);
+    bell(660, 0);
+    bell(990, 0.18);
   } else {
-    // petite clochette simple
-    bell(1040, 0);
+    bell(880, 0);
   }
 
-  setTimeout(() => ctx.close(), 800);
+  setTimeout(() => ctx.close(), 1500);
 }
-
 
 
 // -------------------------
